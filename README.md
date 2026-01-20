@@ -1,4 +1,4 @@
-<![CDATA[# 🌾 KrishiVigyan AI — Agricultural Intelligence Platform
+# 🌾 KrishiVigyan AI — Agricultural Intelligence Platform
 
 <div align="center">
 
@@ -19,38 +19,44 @@
 ## 🌟 Executive Summary
 
 **KrishiVigyan AI** is a "Lab-to-Land" technological intervention designed to bridge the gap between advanced Artificial Intelligence and subsistence farming. By integrating **Computer Vision**, **Market Intelligence**, and **Multilingual Voice Synthesis**, it empowers farmers to:
-1.  🔬 **Diagnose** crop diseases instantly with 98% accuracy.
-2.  📈 **Predict** market trends using real-time APMC data.
-3.  🗣️ **Interact** in their native language (Kannada) via voice.
+
+1. 🔬 **Diagnose** crop diseases instantly with 98% accuracy.
+2. 📈 **Predict** market trends using real-time APMC data.
+3. 🗣️ **Interact** in their native language (Kannada) via voice.
 
 ---
 
 ## 🚀 Key Features
 
 ### 1. 🔬 Neural Pathogen Diagnostic Terminal (`/analysis`)
-*   **Core Tech**: `gemini-3-pro-preview` (Zero-Shot Vision)
-*   **Function**: Identifies diseases from leaf images and provides a structured "Prescription" (Symptoms, Causes, Organic/Chemical Treatment).
-*   **Impact**: Reduces crop loss by providing lab-grade diagnosis in seconds.
+
+- **Core Tech**: `gemini-3-pro-preview` (Zero-Shot Vision)
+- **Function**: Identifies diseases from leaf images and provides a structured "Prescription" (Symptoms, Causes, Organic/Chemical Treatment).
+- **Impact**: Reduces crop loss by providing lab-grade diagnosis in seconds.
 
 ### 2. 🤖 Vani AI: Multilingual Voice Assistant (`/chat`)
-*   **Core Tech**: `gemini-3-flash-preview` + `gemini-2.5-flash-preview-tts`
-*   **Function**: A context-aware chatbot that speaks Kannada. It uses **Raw PCM Decoding** to render audio directly in the browser without heavy plugins.
-*   **Impact**: Makes technology accessible to illiterate or semi-literate farmers.
+
+- **Core Tech**: `gemini-3-flash-preview` + `gemini-2.5-flash-preview-tts`
+- **Function**: A context-aware chatbot that speaks Kannada. It uses **Raw PCM Decoding** to render audio directly in the browser without heavy plugins.
+- **Impact**: Makes technology accessible to illiterate or semi-literate farmers.
 
 ### 3. 📈 Market Intelligence Hub (`/market`)
-*   **Core Tech**: Gemini Search Grounding (`googleSearch`)
-*   **Function**: Bypasses the AI's knowledge cutoff to fetch **Live APMC Prices** from the web.
-*   **Impact**: Mitigates "Information Asymmetry," helping farmers decide *when* and *where* to sell.
+
+- **Core Tech**: Gemini Search Grounding (`googleSearch`)
+- **Function**: Bypasses the AI's knowledge cutoff to fetch **Live APMC Prices** from the web.
+- **Impact**: Mitigates "Information Asymmetry," helping farmers decide *when* and *where* to sell.
 
 ### 4. 🚜 Digital Acreage Tracker (`/tracker`)
-*   **Core Tech**: LocalStorage Relational DB
-*   **Function**: Creates a "Digital Twin" of the farm, tracking growth stages from Sowing to Harvest.
-*   **Impact**: Professionalizes farm management with data-driven schedules.
+
+- **Core Tech**: LocalStorage Relational DB
+- **Function**: Creates a "Digital Twin" of the farm, tracking growth stages from Sowing to Harvest.
+- **Impact**: Professionalizes farm management with data-driven schedules.
 
 ### 5. 🛡️ Admin Governance Console (`/admin`)
-*   **Core Tech**: RBAC (Role-Based Access Control)
-*   **Function**: A centralized dashboard to monitor global scan trends and manage the crop registry.
-*   **Impact**: Enables "Crowdsourced Disease Surveillance" for regional authorities.
+
+- **Core Tech**: RBAC (Role-Based Access Control)
+- **Function**: A centralized dashboard to monitor global scan trends and manage the crop registry.
+- **Impact**: Enables "Crowdsourced Disease Surveillance" for regional authorities.
 
 ---
 
@@ -88,11 +94,12 @@ graph TD
 ```
 
 ### Data Flow
-1.  **Input**: User interaction (Image/Text/Voice) is captured by React.
-2.  **Processing**: Sent to Google Gemini API via `geminiService.ts`.
-3.  **Grounding**: For market queries, Gemini triggers a Google Search to fetch live data.
-4.  **Response**: Structured JSON is returned and rendered into UI components.
-5.  **Persistence**: Data is saved to `localStorage` simulating a relational DB (`kv_global_scans_db`).
+
+1. **Input**: User interaction (Image/Text/Voice) is captured by React.
+2. **Processing**: Sent to Google Gemini API via `geminiService.ts`.
+3. **Grounding**: For market queries, Gemini triggers a Google Search to fetch live data.
+4. **Response**: Structured JSON is returned and rendered into UI components.
+5. **Persistence**: Data is saved to `localStorage` simulating a relational DB (`kv_global_scans_db`).
 
 ---
 
@@ -112,11 +119,13 @@ graph TD
 ## 🏁 Installation & Setup
 
 ### Prerequisites
-*   Node.js v18+
-*   Python 3.8+
-*   Google Gemini API Key
+
+- Node.js v18+
+- Python 3.8+
+- Google Gemini API Key
 
 ### 1. Clone & Install
+
 ```bash
 git clone https://github.com/Tharungowdapr/AGRI-AI.git
 cd AGRI-AI
@@ -124,15 +133,19 @@ npm install
 ```
 
 ### 2. Configure Environment
+
 Create a `.env.local` file in the root directory:
+
 ```env
 API_KEY=your_gemini_api_key_here
 ```
 
 ### 3. Run Development Server
+
 ```bash
 npm run dev
 ```
+
 The app will launch at `http://localhost:5173`.
 
 ---
@@ -140,22 +153,25 @@ The app will launch at `http://localhost:5173`.
 ## 📚 API Reference (Internal)
 
 ### `analyzeCropImage(base64, lang)`
-*   **Input**: Base64 Image String, Language Code ('en'/'kn')
-*   **Output**: JSON `{ diseaseName, confidence, treatment[], economicImpact }`
+
+- **Input**: Base64 Image String, Language Code ('en'/'kn')
+- **Output**: JSON `{ diseaseName, confidence, treatment[], economicImpact }`
 
 ### `speakText(text)`
-*   **Input**: String text
-*   **Output**: Raw PCM Audio Data (Decoded to AudioBuffer by `decodeAudioDataManual`)
+
+- **Input**: String text
+- **Output**: Raw PCM Audio Data (Decoded to AudioBuffer by `decodeAudioDataManual`)
 
 ---
 
 ## 🤝 Contributing
 
 We welcome contributions from the open-source community!
-1.  Fork the repository.
-2.  Create a feature branch (`git checkout -b feature/NewAlgorithm`).
-3.  Commit changes.
-4.  Push to branch and open a Pull Request.
+
+1. Fork the repository.
+2. Create a feature branch (`git checkout -b feature/NewAlgorithm`).
+3. Commit changes.
+4. Push to branch and open a Pull Request.
 
 ---
 
@@ -166,4 +182,3 @@ We welcome contributions from the open-source community!
 *KrishiVigyan AI Team*
 
 </div>
-]]>
