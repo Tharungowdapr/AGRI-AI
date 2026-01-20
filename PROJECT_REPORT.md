@@ -12,7 +12,8 @@
 **Project Domain**: Artificial Intelligence, Agricultural Technology, Web Development  
 **Submission Date**: January 2026
 
-**Project Repository**: https://github.com/Tharung owdapr/AGRI-AI
+**Project Repository**: https://github.com/Tharungowdapr/AGRI-AI  
+**Live Platform**: [KrishiVigyan AI (Google Cloud Run)](https://krishivigyan-ai-agricultural-intelligence-platfor-109270767698.us-west1.run.app/#/)
 
 ---
 
@@ -1027,12 +1028,13 @@ interface AnalysisRecord {
 
 ### Appendix D: Deployment Checklist
 
-- [ ] Set environment variable `API_KEY` in Vercel/Netlify
-- [ ] Enable Gemini API in Google Cloud Console
-- [ ] Configure billing for Gemini API
-- [ ] Test on mobile devices (Android + iOS)
-- [ ] Verify Kannada font rendering
-- [ ] Enable HTTPS (automatic with Vercel/Netlify)
+- [x] Set environment variable `API_KEY` in Google Cloud
+- [x] Enable Gemini API in Google Cloud Console
+- [x] Configure billing for Gemini API
+- [x] Deploy to Google Cloud Run
+- [x] Test on mobile devices (Android + iOS)
+- [x] Verify Kannada font rendering
+- [ ] Enable HTTPS (automatic with Cloud Run)
 - [ ] Configure custom domain (optional)
 - [ ] Set up Google Analytics (optional)
 - [ ] Enable error tracking (Sentry)

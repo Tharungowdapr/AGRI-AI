@@ -12,6 +12,8 @@
 
 [Features](#-features) • [Pages](#-application-pages) • [Architecture](#-system-architecture) • [Installation](#-installation)
 
+**🌍 Live Demo**: [KrishiVigyan AI on Google Cloud](https://krishivigyan-ai-agricultural-intelligence-platfor-109270767698.us-west1.run.app/#/)
+
 </div>
 
 ---
@@ -419,6 +421,11 @@ npm run dev
 ```
 
 The app will launch at `http://localhost:5173`.
+
+### 🚀 Production Deployment
+
+The platform is deployed on **Google Cloud Run**:
+[https://krishivigyan-ai-agricultural-intelligence-platfor-109270767698.us-west1.run.app/#/](https://krishivigyan-ai-agricultural-intelligence-platfor-109270767698.us-west1.run.app/#/)
 
 ### 4. Build for Production
 

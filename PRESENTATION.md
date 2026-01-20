@@ -512,7 +512,7 @@ kv_feedback_db → User Feedback
 6. Hear voice response
 7. Check crop tracker with growth plan
 
-**QR Code**: Link to live deployment (Vercel/Netlify)
+**QR Code**: [Live Deployment Link](https://krishivigyan-ai-agricultural-intelligence-platfor-109270767698.us-west1.run.app/#/)
 
 ---
 
@@ -547,12 +547,14 @@ kv_feedback_db → User Feedback
 
 **Acknowledgments**:
 - Google Gemini API Team
+- Google Cloud Platform (Deployment)
 - [Your College] Faculty
 - Farmers of Chikkaballapur (Pilot Participants)
 
 **Contact**:
 📧 tharungowdapr@gmail.com  
-🔗 https://github.com/Tharungowdapr
+🔗 [GitHub Repository](https://github.com/Tharungowdapr)  
+🌐 [Live Platform](https://krishivigyan-ai-agricultural-intelligence-platfor-109270767698.us-west1.run.app/#/)
 
 **Questions?**
 

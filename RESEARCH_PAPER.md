@@ -324,8 +324,7 @@ Future research will focus on offline capabilities, satellite integration, and b
 
 ---
 
-**Author**: Tharun Gowda PR  
-**Institution**: [Your College/University Name]  
 **Contact**: tharungowdapr@gmail.com  
 **Date**: January 2026  
-**Project Repository**: https://github.com/Tharungowdapr/AGRI-AI
+**Project Repository**: https://github.com/Tharungowdapr/AGRI-AI  
+**Live Deployment**: [Google Cloud Run Link](https://krishivigyan-ai-agricultural-intelligence-platfor-109270767698.us-west1.run.app/#/)
