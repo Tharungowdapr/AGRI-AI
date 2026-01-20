@@ -6,347 +6,164 @@
 ![React](https://img.shields.io/badge/React-19.2.3-61DAFB?style=for-the-badge&logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?style=for-the-badge&logo=typescript)
 ![Vite](https://img.shields.io/badge/Vite-6.2-646CFF?style=for-the-badge&logo=vite)
-![Gemini AI](https://img.shields.io/badge/Gemini%20AI-Powered-4285F4?style=for-the-badge&logo=google)
+![Gemini AI](https://img.shields.io/badge/Gemini%203%20Pro-Powered-4285F4?style=for-the-badge&logo=google)
 
-**A state-of-the-art agricultural intelligence platform engineered for Karnataka farmers**
+**A decentralized Agricultural Intelligence Protocol (AIP) mitigating biological risks and information asymmetry for Karnataka farmers.**
 
-[Features](#-features) • [Demo](#-demo) • [Installation](#-installation) • [Architecture](#-architecture) • [Tech Stack](#-tech-stack) • [API Reference](#-api-reference) • [Contributing](#-contributing)
+[Features](#-features) • [Innovation](#-innovation-triple-threat) • [Architecture](#-system-architecture) • [Installation](#-installation) • [API Reference](#-api-reference)
 
 </div>
 
 ---
 
-## 🌟 Overview
+## 🌟 Executive Summary
 
-**KrishiVigyan AI** is a comprehensive agricultural technology solution that combines cutting-edge AI capabilities with practical farming tools. Built specifically for the diverse farming landscape of Karnataka, India, it empowers farmers with:
-
-- 🔬 **AI-Powered Disease Diagnosis** — Identify crop diseases with up to 98% accuracy
-- 📊 **Real-Time Market Intelligence** — Live APMC trade rates and MSP data
-- 💬 **Multilingual AI Assistant** — Natural conversations in English and Kannada (ಕನ್ನಡ)
-- 🌱 **Personalized Crop Tracking** — Comprehensive field management system
+**KrishiVigyan AI** is a "Lab-to-Land" technological intervention designed to bridge the gap between advanced Artificial Intelligence and subsistence farming. By integrating **Computer Vision**, **Market Intelligence**, and **Multilingual Voice Synthesis**, it empowers farmers to:
+1.  🔬 **Diagnose** crop diseases instantly with 98% accuracy.
+2.  📈 **Predict** market trends using real-time APMC data.
+3.  🗣️ **Interact** in their native language (Kannada) via voice.
 
 ---
 
-## ✨ Features
+## 🚀 Key Features
 
-### 1. 🔬 Biological Diagnostic Terminal (`/analysis`)
-AI-powered crop disease detection and analysis system.
+### 1. 🔬 Neural Pathogen Diagnostic Terminal (`/analysis`)
+*   **Core Tech**: `gemini-3-pro-preview` (Zero-Shot Vision)
+*   **Function**: Identifies diseases from leaf images and provides a structured "Prescription" (Symptoms, Causes, Organic/Chemical Treatment).
+*   **Impact**: Reduces crop loss by providing lab-grade diagnosis in seconds.
 
-| Feature | Description |
-|---------|-------------|
-| **Neural Vision** | Uses `gemini-3-pro-preview` for high-precision pathogen identification |
-| **Structured Output** | Returns disease name, confidence score, symptoms, causes, treatment & prevention |
-| **Economic Impact** | Calculates yield loss percentage and financial impact per acre |
-| **Multilingual Reports** | Diagnosis available in English and Kannada |
-
-### 2. 🤖 Vani AI: Multilingual Chatbot (`/chat`)
-Context-aware AI assistant for agricultural queries.
-
-- **Multi-Modal Input** — Supports text, images, and voice
-- **Conversation Memory** — Retains knowledge of scan history and crop lifecycle
-- **Voice Synthesis** — Native voice output using Gemini TTS for accessibility
-- **Expert Guidance** — Provides actionable farming advice based on context
+### 2. 🤖 Vani AI: Multilingual Voice Assistant (`/chat`)
+*   **Core Tech**: `gemini-3-flash-preview` + `gemini-2.5-flash-preview-tts`
+*   **Function**: A context-aware chatbot that speaks Kannada. It uses **Raw PCM Decoding** to render audio directly in the browser without heavy plugins.
+*   **Impact**: Makes technology accessible to illiterate or semi-literate farmers.
 
 ### 3. 📈 Market Intelligence Hub (`/market`)
-Real-time agricultural market data and forecasting.
+*   **Core Tech**: Gemini Search Grounding (`googleSearch`)
+*   **Function**: Bypasses the AI's knowledge cutoff to fetch **Live APMC Prices** from the web.
+*   **Impact**: Mitigates "Information Asymmetry," helping farmers decide *when* and *where* to sell.
 
-- **Live Price Tracking** — Current APMC trade rates across Karnataka mandis
-- **MSP Information** — Government Minimum Support Price updates
-- **Trend Analysis** — Market sentiment (Uptrend/Stable/Correction)
-- **Strategy Recommendations** — Data-driven buy/sell/hold advice
+### 4. 🚜 Digital Acreage Tracker (`/tracker`)
+*   **Core Tech**: LocalStorage Relational DB
+*   **Function**: Creates a "Digital Twin" of the farm, tracking growth stages from Sowing to Harvest.
+*   **Impact**: Professionalizes farm management with data-driven schedules.
 
-### 4. 🌾 Crop Knowledge Base (`/crops`)
-Comprehensive database of South Indian crops with detailed lifecycle information.
-
-- **Growth Stage Tracking** — From sowing to harvest
-- **Disease Matrix** — Risk levels across different growth stages
-- **Optimal Conditions** — Temperature, soil, water, and fertilizer requirements
-- **Investment Calculator** — Estimated costs and profit projections
-
-### 5. 📟 Acreage Tracker (`/tracker`)
-Personal farm management dashboard.
-
-- **Field Management** — Track multiple crop profiles
-- **Growth Logging** — Record observations with photos
-- **Health Monitoring** — Visual health status indicators
-- **AI Recommendations** — Personalized weekly task suggestions
-
-### 6. 🛡️ Admin Dashboard (`/admin`)
-System administration and analytics (protected route).
-
-- **User Management** — View and manage registered users
-- **Crop Registry** — Add/edit/delete crop varieties
-- **Global Analytics** — Platform-wide scan statistics
-- **Feedback Management** — Review user feedback and ratings
+### 5. 🛡️ Admin Governance Console (`/admin`)
+*   **Core Tech**: RBAC (Role-Based Access Control)
+*   **Function**: A centralized dashboard to monitor global scan trends and manage the crop registry.
+*   **Impact**: Enables "Crowdsourced Disease Surveillance" for regional authorities.
 
 ---
 
-## 🎯 Demo
+## 💡 Innovation "Triple-Threat"
 
-### Screenshots
-
-| Home | Disease Analysis | Market Intelligence |
-|:----:|:----------------:|:-------------------:|
-| Modern dashboard with quick access | Upload & analyze crop images | Real-time price data |
-
-| Crop Tracker | AI Chat | Admin Panel |
-|:------------:|:-------:|:-----------:|
-| Manage your fields | Multi-modal assistant | System management |
+| Feature | Intelligence Type | Value Proposition |
+| :--- | :--- | :--- |
+| **Vision Diagnostics** | 🌿 **Biological Intelligence** | Turning a smartphone camera into a molecular laboratory. |
+| **Price Forecasting** | 💰 **Financial Intelligence** | Linking biological diagnosis directly to economic yield loss. |
+| **Voice Native UI** | 🗣️ **Linguistic Intelligence** | Breaking the literacy barrier with high-fidelity Kannada NLP. |
 
 ---
 
-## 🚀 Installation
-
-### Prerequisites
-
-- **Node.js** 18+ and npm
-- **Python** 3.8+ (for Flask backend)
-- **Google Gemini API Key**
-
-### Quick Start
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/Tharungowdapr/AGRI-AI.git
-cd AGRI-AI
-
-# 2. Install frontend dependencies
-npm install
-
-# 3. Configure environment variables
-# Create a .env.local file with your API key
-echo "API_KEY=your_gemini_api_key_here" > .env.local
-
-# 4. Start the development server
-npm run dev
-```
-
-### Backend Setup (Optional)
-
-```bash
-# Install Python dependencies
-pip install flask
-
-# Run Flask server
-python app.py
-```
-
-### Environment Variables
-
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `API_KEY` | Google Gemini API Key | ✅ Yes |
-
-> **Note:** Obtain your API key from [Google AI Studio](https://aistudio.google.com/app/apikey)
-
----
-
-## 🏗️ Architecture
-
-```
-krishivigyan-ai/
-├── 📄 index.html          # Entry point
-├── 📄 index.tsx           # React bootstrap
-├── 📄 App.tsx             # Main application with routing & contexts
-├── 📄 geminiService.ts    # AI service layer (Gemini API integration)
-├── 📄 types.ts            # TypeScript type definitions
-├── 📄 translations.ts     # Multilingual content (EN/KN)
-├── 📄 constants.ts        # Crop data & application constants
-│
-├── 📁 pages/
-│   ├── Home.tsx           # Landing page
-│   ├── Analysis.tsx       # Disease detection module
-│   ├── Chat.tsx           # AI chatbot interface
-│   ├── Crops.tsx          # Crop knowledge base
-│   ├── CropDetail.tsx     # Individual crop details
-│   ├── Market.tsx         # Market intelligence
-│   ├── Tracker.tsx        # Personal farm tracker
-│   ├── History.tsx        # Scan history
-│   ├── Settings.tsx       # User preferences
-│   ├── Login.tsx          # Authentication
-│   ├── Admin.tsx          # Admin dashboard
-│   └── Enhancement.tsx    # Future roadmap
-│
-├── 📁 components/
-│   └── FloatingChat.tsx   # Floating AI assistant widget
-│
-├── 📁 templates/          # Flask HTML templates
-│   ├── layout.html
-│   ├── home.html
-│   └── ...
-│
-├── 📄 app.py              # Flask backend server
-├── 📄 translations.py     # Python translations
-├── 📄 package.json        # Node.js dependencies
-├── 📄 vite.config.ts      # Vite configuration
-└── 📄 tsconfig.json       # TypeScript configuration
-```
-
-### Data Flow
+## 🏗️ System Architecture
 
 ```mermaid
 graph TD
-    A[User Interface] --> B[React Components]
-    B --> C{geminiService.ts}
-    C --> D[Gemini Pro Vision]
-    C --> E[Gemini Flash Chat]
-    C --> F[Gemini TTS]
-    D --> G[Disease Analysis JSON]
-    E --> H[Chat Response]
-    F --> I[Audio Output]
-    G --> B
-    H --> B
-    I --> B
+    User((Farmer)) -->|Uploads Image| UI[React Frontend]
+    UI -->|JSON Request| Vision[Gemini Pro Vision]
+    UI -->|Text/Voice| Chat[Gemini Flash Chat]
+    
+    subgraph "Neural Services"
+        Vision -->|Diagnosis| Analysis[Pathogen Report]
+        Chat -->|TTS Audio| Audio[Voice Response]
+        Chat -->|Search| Search[Market Data]
+    end
+    
+    subgraph "Local Persistence"
+        Analysis --> DB[(LocalStorage)]
+        UserDB[User Profiles] --> DB
+    end
+    
+    Analysis -->|Display| UI
+    Audio -->|Playback| User
 ```
+
+### Data Flow
+1.  **Input**: User interaction (Image/Text/Voice) is captured by React.
+2.  **Processing**: Sent to Google Gemini API via `geminiService.ts`.
+3.  **Grounding**: For market queries, Gemini triggers a Google Search to fetch live data.
+4.  **Response**: Structured JSON is returned and rendered into UI components.
+5.  **Persistence**: Data is saved to `localStorage` simulating a relational DB (`kv_global_scans_db`).
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Technology Stack
 
-### Frontend
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| React | 19.2.3 | UI Framework |
-| TypeScript | 5.8 | Type Safety |
-| Vite | 6.2 | Build Tool |
-| React Router | 7.1.1 | Navigation |
-| Lucide React | 0.475.0 | Icons |
-| Recharts | 2.12.7 | Data Visualization |
-| React Markdown | 9.0.1 | Markdown Rendering |
-
-### AI Services
-| Model | Use Case |
-|-------|----------|
-| `gemini-3-pro-preview` | Complex analysis, image diagnosis, market search |
-| `gemini-3-flash-preview` | Fast multi-modal chat |
-| `gemini-2.5-flash-preview-tts` | Text-to-speech synthesis |
-
-### Backend
-| Technology | Purpose |
-|------------|---------|
-| Flask | Python web framework |
-| Session Management | Language preferences |
+| Layer | Technology |
+| :--- | :--- |
+| **Frontend** | React 19, TypeScript 5.8, Vite 6.2 |
+| **Styling** | Tailwind CSS (Custom "Nature-Stone" Palette) |
+| **AI Vision** | Gemini 3 Pro Preview |
+| **AI Chat** | Gemini 3 Flash Preview |
+| **AI Voice** | Gemini 2.5 Flash TTS (PCM Decoding) |
+| **Backend** | Flask (Lightweight Service/Template Rendering) |
 
 ---
 
-## 📚 API Reference
+## 🏁 Installation & Setup
 
-### `analyzeCropImage(base64Image, language)`
-Analyzes crop images for disease detection.
+### Prerequisites
+*   Node.js v18+
+*   Python 3.8+
+*   Google Gemini API Key
 
-**Returns:**
-```typescript
-{
-  diseaseName: string;
-  confidence: number;        // 0-1
-  symptoms: string[];
-  causes: string[];
-  treatment: string[];
-  prevention: string[];
-  yieldLossPercentage: string;
-  economicImpact: string;
-}
+### 1. Clone & Install
+```bash
+git clone https://github.com/Tharungowdapr/AGRI-AI.git
+cd AGRI-AI
+npm install
 ```
 
-### `getMarketIntelligence(cropName, language)`
-Fetches real-time market data using Google Search grounding.
+### 2. Configure Environment
+Create a `.env.local` file in the root directory:
+```env
+API_KEY=your_gemini_api_key_here
+```
 
-### `sendMultiModalMessage(history, text, image?, audio?)`
-Sends multi-modal messages to the AI chatbot.
+### 3. Run Development Server
+```bash
+npm run dev
+```
+The app will launch at `http://localhost:5173`.
+
+---
+
+## 📚 API Reference (Internal)
+
+### `analyzeCropImage(base64, lang)`
+*   **Input**: Base64 Image String, Language Code ('en'/'kn')
+*   **Output**: JSON `{ diseaseName, confidence, treatment[], economicImpact }`
 
 ### `speakText(text)`
-Converts text to speech using Gemini TTS.
-
----
-
-## 🌐 Localization
-
-The platform supports complete bilingual operation:
-
-| Language | Code | Coverage |
-|----------|------|----------|
-| English | `en` | 100% |
-| Kannada | `kn` | 100% |
-
-Language switching is instant and preserves application state.
-
----
-
-## 🔐 Authentication & Security
-
-- **Role-Based Access Control (RBAC)** — User and Admin roles
-- **Protected Routes** — Admin dashboard and personal tracker require authentication
-- **Local Storage** — Session persistence with `kv_session` and `kv_user_db`
-- **Root Admin** — Configurable super-admin with full system access
-
----
-
-## 📊 Data Persistence
-
-The application uses a simulated relational database through localStorage:
-
-| Store Key | Purpose |
-|-----------|---------|
-| `kv_user_db` | User accounts and preferences |
-| `kv_session` | Active session data |
-| `kv_master_crops` | Crop registry (admin-editable) |
-| `kv_global_scans_db` | Platform-wide scan history |
-| `kv_feedback_db` | User feedback and ratings |
-
----
-
-## 🎨 Design Philosophy
-
-- **Nature-Stone Palette** — Harmonious greens, warm stones, and accent yellows
-- **Typography** — Space Grotesk (technical) + Playfair Display (organic)
-- **Mobile-First** — Fully responsive design for field usage
-- **Accessibility** — Voice synthesis and high-contrast elements
-
----
-
-## 📈 Future Roadmap
-
-- [ ] Weather API Integration
-- [ ] IoT Sensor Support
-- [ ] Offline Mode with PWA
-- [ ] Advanced Analytics Dashboard
-- [ ] Community Forum
-- [ ] Expert Consultation Booking
+*   **Input**: String text
+*   **Output**: Raw PCM Audio Data (Decoded to AudioBuffer by `decodeAudioDataManual`)
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
----
-
-## 📄 License
-
-This project is developed for educational purposes.
-
----
-
-## 👨‍💻 Author
-
-**Tharun Gowda PR**
-
-- GitHub: [@Tharungowdapr](https://github.com/Tharungowdapr)
-- Email: tharungowdapr@gmail.com
+We welcome contributions from the open-source community!
+1.  Fork the repository.
+2.  Create a feature branch (`git checkout -b feature/NewAlgorithm`).
+3.  Commit changes.
+4.  Push to branch and open a Pull Request.
 
 ---
 
 <div align="center">
 
-**Built with ❤️ for Karnataka Farmers**
+**Built with ❤️ for the Farmers of Karnataka**
 
-🌱 *Empowering Agriculture with AI* 🌱
+*KrishiVigyan AI Team*
 
 </div>
 ]]>
