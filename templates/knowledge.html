@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="max-w-7xl mx-auto px-6 py-12">
+    <div class="flex justify-between items-end mb-16">
+        <div class="text-left">
+            <h1 class="text-6xl font-heading font-black tracking-tighter">{{ t.knowledge.title }}</h1>
+            <p class="text-stone-500 mt-2 font-medium italic">{{ t.knowledge.subtitle }}</p>
+        </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {% for cid, cname in t.crops.items() %}
+        {% if not cid.endswith('Desc') %}
+        <div class="bg-white rounded-[3rem] overflow-hidden border border-stone-200 group hover:shadow-2xl transition-all flex flex-col h-full shadow-sm">
+            <div class="h-48 bg-stone-100 relative overflow-hidden flex items-center justify-center">
+                <!-- Loader placeholder -->
+                <div class="absolute inset-0 flex items-center justify-center bg-stone-50 z-0 image-loader transition-opacity duration-300">
+                    <i data-lucide="loader-2" class="w-6 h-6 text-stone-300 animate-spin"></i>
+                </div>
+                <!-- Main Image -->
+                <img 
+                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" 
+                    data-crop-id="{{ cid }}"
+                    class="crop-img-target w-full h-full object-cover group-hover:scale-110 transition-all duration-700 opacity-0 relative z-10" 
+                    alt="{{ cname }}"
+                    loading="lazy"
+                >
+                <div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity z-20"></div>
+            </div>
+            <div class="p-8 text-left flex-grow flex flex-col justify-between">
+                <div>
+                    <h3 class="text-2xl font-heading font-bold text-stone-900 leading-tight">{{ cname }}</h3>
+                    <p class="text-stone-400 text-[10px] font-black uppercase tracking-widest mt-3">{{ t.common.regionalVariety }}</p>
+                </div>
+                <div class="mt-8 pt-6 border-t border-stone-50">
+                    <a href="/crops/{{ cid }}" class="inline-flex items-center gap-2 text-primary font-black text-[10px] uppercase tracking-[0.2em] hover:gap-4 transition-all">
+                        {{ t.common.accessProfile }} <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    (function() {
+        const CROP_IMAGES = {
+            'paddy': 'https://images.unsplash.com/photo-1516743611421-39ed24933979?auto=format&fit=crop&q=80&w=600', 
+            'sugarcane': 'https://images.unsplash.com/photo-1594750802422-777651030e46?auto=format&fit=crop&q=80&w=600',
+            'ragi': 'https://images.unsplash.com/photo-1628102428503-49d799f2b800?auto=format&fit=crop&q=80&w=600',
+            'maize': 'https://images.unsplash.com/photo-1551730459-92db2a308d6a?auto=format&fit=crop&q=80&w=600'
+        };
+        const DEFAULT_IMG = 'https://images.unsplash.com/photo-1500382017468-9049fee74a62?auto=format&fit=crop&q=80&w=600';
+
+        function initImages() {
+            const targets = document.querySelectorAll('.crop-img-target');
+            targets.forEach(img => {
+                const cid = img.dataset.cropId;
+                const source = CROP_IMAGES[cid] || DEFAULT_IMG;
+
+                const reveal = () => {
+                    img.classList.remove('opacity-0');
+                    img.classList.add('opacity-100');
+                    const container = img.closest('.relative');
+                    if (container) {
+                        const loader = container.querySelector('.image-loader');
+                        if (loader) {
+                            loader.style.opacity = '0';
+                            setTimeout(() => loader.classList.add('hidden'), 300);
+                        }
+                    }
+                };
+
+                img.onload = reveal;
+                img.onerror = function() {
+                    // Try fallback only once to prevent loops
+                    if (!this.hasAttribute('data-fallback-tried')) {
+                        this.setAttribute('data-fallback-tried', 'true');
+                        this.src = DEFAULT_IMG;
+                    } else {
+                        // If fallback also fails, just show the placeholder background
+                        reveal();
+                    }
+                };
+
+                // Trigger load with optimized source
+                img.src = source;
+                
+                // Immediate check for cached images that are already loaded
+                if (img.complete && img.naturalWidth > 0) {
+                    reveal();
+                }
+            });
+        }
+
+        // Initialize on DOM load
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initImages);
+        } else {
+            initImages();
+        }
+    })();
+</script>
+{% endblock %}

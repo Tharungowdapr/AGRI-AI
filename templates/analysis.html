@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="max-w-7xl mx-auto px-6 py-16 grid lg:grid-cols-2 gap-12">
+    <div class="bg-white p-10 rounded-[3.5rem] border border-stone-200 shadow-xl">
+        <h2 class="text-4xl font-heading font-bold mb-8">{{ t.analysis.terminalTitle }}</h2>
+        <div id="upload-box" class="aspect-square bg-stone-50 border-2 border-dashed border-stone-200 rounded-[2.5rem] flex flex-col items-center justify-center cursor-pointer group hover:bg-stone-100 transition-all">
+            <i data-lucide="camera" class="w-20 h-20 text-stone-300 group-hover:text-primary transition-colors"></i>
+            <p class="mt-4 font-bold text-stone-400">{{ t.analysis.uploadPrompt }}</p>
+            <input type="file" id="file-input" class="hidden" accept="image/*">
+        </div>
+        <img id="preview" class="hidden aspect-square rounded-[2.5rem] object-cover mb-6 border border-stone-100">
+        <button id="analyze-btn" class="hidden w-full bg-primary text-white py-6 rounded-2xl font-black uppercase tracking-widest mt-6 shadow-xl shadow-primary/20 hover:bg-stone-900 transition-all">
+            {{ t.analysis.runBtn }}
+        </button>
+    </div>
+
+    <div id="results-box" class="bg-stone-900 text-white p-10 rounded-[3.5rem] hidden border border-stone-800 shadow-2xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-10 opacity-5 pointer-events-none">
+            <i data-lucide="check-circle" class="w-48 h-48"></i>
+        </div>
+        <div class="relative z-10 flex justify-between items-start mb-10">
+            <div>
+                <h3 id="disease-name" class="text-5xl font-heading font-bold text-primary">Healthy</h3>
+                <p id="confidence" class="text-stone-400 font-bold uppercase tracking-widest mt-2">{{ t.analysis.confidence }}: --</p>
+            </div>
+        </div>
+        <div class="relative z-10 space-y-8">
+            <div class="bg-white/5 p-8 rounded-[2rem] border border-white/10">
+                <h4 class="text-primary font-black uppercase text-xs mb-4 tracking-widest">{{ t.analysis.treatment }}</h4>
+                <ul id="treatment-list" class="space-y-3 text-stone-300 font-medium"></ul>
+            </div>
+            <div class="bg-white/5 p-8 rounded-[2rem] border border-white/10">
+                <h4 class="text-primary font-black uppercase text-xs mb-4 tracking-widest">{{ t.analysis.economic }}</h4>
+                <p id="impact-desc" class="text-stone-300 italic font-medium leading-relaxed"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const box = document.getElementById('upload-box');
+    const input = document.getElementById('file-input');
+    const preview = document.getElementById('preview');
+    const btn = document.getElementById('analyze-btn');
+
+    box.addEventListener('click', () => input.click());
+
+    input.onchange = e => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = () => {
+            preview.src = reader.result;
+            preview.classList.remove('hidden');
+            box.classList.add('hidden');
+            btn.classList.remove('hidden');
+            btn.innerText = "{{ t.analysis.runBtn }}";
+            btn.disabled = false;
+        };
+        reader.readAsDataURL(file);
+    };
+
+    btn.onclick = async () => {
+        btn.innerText = "{{ t.analysis.scanning }}";
+        btn.disabled = true;
+        
+        try {
+            const response = await fetch('/api/analyze', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({image: preview.src})
+            });
+            
+            const data = await response.json();
+            
+            document.getElementById('disease-name').innerText = data.diseaseName;
+            document.getElementById('confidence').innerText = `{{ t.analysis.confidence }}: ${(data.confidence * 100).toFixed(1)}%`;
+            document.getElementById('impact-desc').innerText = data.economicImpact;
+            
+            const list = document.getElementById('treatment-list');
+            list.innerHTML = '';
+            data.treatment.forEach(t => {
+                const li = document.createElement('li');
+                li.className = 'flex gap-2';
+                li.innerHTML = `<span class="text-primary font-bold">•</span> <span>${t}</span>`;
+                list.appendChild(li);
+            });
+            
+            document.getElementById('results-box').classList.remove('hidden');
+            btn.innerText = "{{ t.analysis.scanComplete }}";
+        } catch (err) {
+            btn.innerText = "{{ t.common.error }}";
+            btn.disabled = false;
+        }
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="max-w-4xl mx-auto px-6 py-12">
+    <h1 class="text-5xl font-heading font-black mb-12">Preferences</h1>
+    
+    <div class="space-y-8">
+        <div class="bg-white p-10 rounded-[3rem] border border-stone-200 shadow-xl">
+            <h3 class="text-2xl font-black mb-8 flex items-center gap-4">
+                <i data-lucide="globe" class="text-primary"></i> System Language
+            </h3>
+            <div class="grid grid-cols-2 gap-4">
+                {% for code, name in [('en', 'English'), ('kn', 'ಕನ್ನಡ')] %}
+                <a href="/set_lang/{{ code }}" class="p-4 rounded-2xl border text-center font-bold text-sm transition-all {{ 'bg-primary/10 border-primary text-primary shadow-inner' if lang == code else 'bg-stone-50 border-stone-100 text-stone-400 hover:bg-white' }}">
+                    {{ name }}
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <div class="bg-white p-10 rounded-[3rem] border border-stone-200 shadow-xl">
+            <h3 class="text-2xl font-black mb-8 flex items-center gap-4">
+                <i data-lucide="shield" class="text-primary"></i> Neural Data Privacy
+            </h3>
+            <div class="flex justify-between items-center p-6 bg-stone-50 rounded-[2rem] border border-stone-100">
+                <div>
+                    <h4 class="font-bold text-stone-900">Diagnostic Cache</h4>
+                    <p class="text-sm text-stone-400">Purge local history to free system memory.</p>
+                </div>
+                <button class="px-6 py-3 bg-red-50 text-red-500 rounded-xl font-black text-xs uppercase tracking-widest">Purge Cache</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

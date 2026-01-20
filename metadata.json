@@ -1,0 +1,9 @@
+{
+  "name": "KrishiVigyan AI - Agricultural Intelligence Platform",
+  "description": "An end-to-end AI-powered agricultural platform for Karnataka farmers, providing real-time disease detection, growth monitoring, market price forecasting, and multilingual support.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}
